@@ -1,6 +1,6 @@
 syntax = "proto3";
 package user;
-option go_package = "./service/pb";
+option go_package = "./service/pb;user";
 
 // ==================用户登陆==========================
 message LoginRequest {
@@ -23,7 +23,8 @@ message RegisterResponse {
     string msg = 2;
 }
 
+
 service UserService {
-    rpc Login (LoginRequest) returns (LoginResponse);
-    rpc Register (RegisterRequest) returns (RegisterResponse);
+    rpc Login (LoginRequest) returns (LoginResponse) {}
+    rpc Register (RegisterRequest) returns (RegisterResponse){}
 }

@@ -7,5 +7,6 @@ import (
 
 func TestConInit(t *testing.T) {
 	ConfInit()
-	fmt.Print(Conf)
+	fmt.Print(Conf.Jwt)
+	fmt.Print(Conf.Service)
 }
