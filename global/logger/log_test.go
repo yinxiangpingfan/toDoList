@@ -5,7 +5,7 @@ import (
 )
 
 func TestLoggerInit(t *testing.T) {
-	LoggerInit()
+	// LoggerInit(path )
 	Logger.Errorf("2")
 	Logger.Debugf("1")
 	Logger.Panicf("3")

@@ -7,7 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func (d Dber) Login(name string, password string) (int, error) {
+func (d *Dber) Login(name string, password string) (int, error) {
 	user := model.User{}
 	err := d.Where("username = ?", name).First(&user).Error
 	if err != nil {

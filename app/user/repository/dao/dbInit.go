@@ -10,6 +10,14 @@ import (
 	"gorm.io/gorm"
 )
 
+type Dber struct {
+	*gorm.DB
+}
+
+func NewUserDBer() *Dber {
+	return &Dber{model.DB}
+}
+
 func DatabaseInit() {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		config.Conf.Mysql.User,

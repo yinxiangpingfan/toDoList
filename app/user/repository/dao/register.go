@@ -6,14 +6,9 @@ import (
 	"toDoList/app/user/repository/model"
 
 	"github.com/go-sql-driver/mysql"
-	"gorm.io/gorm"
 )
 
-type Dber struct {
-	*gorm.DB
-}
-
-func (d Dber) Register(name string, password string, salt string) (int, error) {
+func (d *Dber) Register(name string, password string, salt string) (int, error) {
 	user := model.User{
 		Username: name,
 		Password: GenMD5WithSalt(password, salt),

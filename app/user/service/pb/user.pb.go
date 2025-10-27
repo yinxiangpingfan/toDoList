@@ -4,7 +4,7 @@
 // 	protoc        v3.19.4
 // source: user.proto
 
-package user
+package pb
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -77,8 +77,7 @@ func (x *LoginRequest) GetPassword() string {
 type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Code          int64                  `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
-	Token         string                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
-	Msg           string                 `protobuf:"bytes,3,opt,name=msg,proto3" json:"msg,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -118,13 +117,6 @@ func (x *LoginResponse) GetCode() int64 {
 		return x.Code
 	}
 	return 0
-}
-
-func (x *LoginResponse) GetToken() string {
-	if x != nil {
-		return x.Token
-	}
-	return ""
 }
 
 func (x *LoginResponse) GetMsg() string {
@@ -244,23 +236,22 @@ var File_user_proto protoreflect.FileDescriptor
 const file_user_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"user.proto\x12\x04user\"F\n" +
+	"user.proto\x12\x02pb\"F\n" +
 	"\fLoginRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"K\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"5\n" +
 	"\rLoginResponse\x12\x12\n" +
-	"\x04code\x18\x01 \x01(\x03R\x04code\x12\x14\n" +
-	"\x05token\x18\x02 \x01(\tR\x05token\x12\x10\n" +
-	"\x03msg\x18\x03 \x01(\tR\x03msg\"I\n" +
+	"\x04code\x18\x01 \x01(\x03R\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\"I\n" +
 	"\x0fRegisterRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"8\n" +
 	"\x10RegisterResponse\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\x03R\x04code\x12\x10\n" +
-	"\x03msg\x18\x02 \x01(\tR\x03msg2~\n" +
-	"\vUserService\x122\n" +
-	"\x05Login\x12\x12.user.LoginRequest\x1a\x13.user.LoginResponse\"\x00\x12;\n" +
-	"\bRegister\x12\x15.user.RegisterRequest\x1a\x16.user.RegisterResponse\"\x00B\x13Z\x11./service/pb;userb\x06proto3"
+	"\x03msg\x18\x02 \x01(\tR\x03msg2v\n" +
+	"\vUserService\x12.\n" +
+	"\x05Login\x12\x10.pb.LoginRequest\x1a\x11.pb.LoginResponse\"\x00\x127\n" +
+	"\bRegister\x12\x13.pb.RegisterRequest\x1a\x14.pb.RegisterResponse\"\x00B\x11Z\x0f./service/pb;pbb\x06proto3"
 
 var (
 	file_user_proto_rawDescOnce sync.Once
@@ -276,16 +267,16 @@ func file_user_proto_rawDescGZIP() []byte {
 
 var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_user_proto_goTypes = []any{
-	(*LoginRequest)(nil),     // 0: user.LoginRequest
-	(*LoginResponse)(nil),    // 1: user.LoginResponse
-	(*RegisterRequest)(nil),  // 2: user.RegisterRequest
-	(*RegisterResponse)(nil), // 3: user.RegisterResponse
+	(*LoginRequest)(nil),     // 0: pb.LoginRequest
+	(*LoginResponse)(nil),    // 1: pb.LoginResponse
+	(*RegisterRequest)(nil),  // 2: pb.RegisterRequest
+	(*RegisterResponse)(nil), // 3: pb.RegisterResponse
 }
 var file_user_proto_depIdxs = []int32{
-	0, // 0: user.UserService.Login:input_type -> user.LoginRequest
-	2, // 1: user.UserService.Register:input_type -> user.RegisterRequest
-	1, // 2: user.UserService.Login:output_type -> user.LoginResponse
-	3, // 3: user.UserService.Register:output_type -> user.RegisterResponse
+	0, // 0: pb.UserService.Login:input_type -> pb.LoginRequest
+	2, // 1: pb.UserService.Register:input_type -> pb.RegisterRequest
+	1, // 2: pb.UserService.Login:output_type -> pb.LoginResponse
+	3, // 3: pb.UserService.Register:output_type -> pb.RegisterResponse
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

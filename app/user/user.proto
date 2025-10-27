@@ -1,6 +1,6 @@
 syntax = "proto3";
-package user;
-option go_package = "./service/pb;user";
+package pb;
+option go_package = "./service/pb;pb";
 
 // ==================用户登陆==========================
 message LoginRequest {
@@ -9,8 +9,7 @@ message LoginRequest {
 }
 message LoginResponse {
     int64 code = 1;
-    string token = 2;
-    string msg = 3;
+    string msg = 2;
 }
 //==================用户注册==========================
 message RegisterRequest {

@@ -9,8 +9,8 @@ import (
 
 var Logger *zap.SugaredLogger
 
-func LoggerInit() {
-	writeSyncer := getLogWriter()
+func LoggerInit(path string) {
+	writeSyncer := getLogWriter(path)
 	encoder := getEncoder()
 	core := zapcore.NewCore(encoder, writeSyncer, zapcore.ErrorLevel)
 	logger := zap.New(core)
@@ -21,7 +21,7 @@ func getEncoder() zapcore.Encoder {
 	return zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig())
 }
 
-func getLogWriter() zapcore.WriteSyncer {
-	file, _ := os.OpenFile("../../logs/test.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+func getLogWriter(path string) zapcore.WriteSyncer {
+	file, _ := os.OpenFile(path, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	return zapcore.AddSync(file)
 }
