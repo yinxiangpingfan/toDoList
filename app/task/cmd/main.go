@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"strconv"
-	"toDoList/app/user/repository/dao"
-	"toDoList/app/user/service"
-	"toDoList/app/user/service/pb"
+	"toDoList/app/task/repository/dao"
+	"toDoList/app/task/service"
+	"toDoList/app/task/service/pb"
 	"toDoList/global/config"
 	"toDoList/global/logger"
 
@@ -25,22 +25,22 @@ func main() {
 	// 创建微服务实例
 	microService := micro.NewService(
 		micro.Name("rpcUserService"),
-		micro.Address(config.Conf.Service.UserGrpcHost+":"+strconv.Itoa(config.Conf.Service.UserGrpcPort)),
+		micro.Address(config.Conf.Service.TaskGrpcHost+":"+strconv.Itoa(config.Conf.Service.TaskGrpcPort)),
 		micro.Registry(etcdReg),
 	)
 	// 初始化服务
 	microService.Init()
 
-	// 注册UserService服务handler
-	err := pb.RegisterUserServiceHandler(microService.Server(), new(service.UserSrv))
+	// 注册TaskService服务handler
+	err := pb.RegisterTaskServiceHandler(microService.Server(), new(service.TaskSrv))
 	if err != nil {
-		logger.Logger.Panicf("注册UserService失败: %v", err)
+		logger.Logger.Panicf("注册TaskService失败: %v", err)
 	}
 
-	fmt.Println("UserService启动成功")
+	fmt.Println("TaskService启动成功")
 
 	// 启动服务
 	if err := microService.Run(); err != nil {
-		logger.Logger.Panicf("启动UserService失败: %v", err)
+		logger.Logger.Panicf("启动TaskService失败: %v", err)
 	}
 }
