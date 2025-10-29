@@ -62,8 +62,8 @@ message GetAllResponse {
 //===================服务定义==========================
 
 service TaskService {
-    rpc AddTask(AddRequest) returns (AddResponse) {}
-    rpc DeleteTask(DelRequest) returns (DelResponse) {}
-    rpc UpdateTask(UpdateRequest) returns (UpdateResponse) {}
+    rpc AddTask(stream AddRequest) returns (stream AddResponse) {}
+    rpc DeleteTask(stream DelRequest) returns (stream DelResponse) {}
+    rpc UpdateTask(stream UpdateRequest) returns (stream UpdateResponse) {}
     rpc GetAllTasks(GetAllRequest) returns (GetAllResponse) {}
 }

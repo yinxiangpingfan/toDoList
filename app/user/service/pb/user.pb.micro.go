@@ -5,14 +5,13 @@ package pb
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "google.golang.org/protobuf/proto"
+	math "math"
+)
 
+import (
 	context "context"
-
 	client "go-micro.dev/v5/client"
-
 	server "go-micro.dev/v5/server"
 )
 

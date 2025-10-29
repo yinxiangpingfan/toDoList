@@ -16,10 +16,10 @@ func (u *UserSrv) Login(ctx context.Context, req *pb.LoginRequest, res *pb.Login
 			res.Code = 400
 			res.Msg = err.Error()
 		case 2:
-			res.Code = 2
+			res.Code = 401
 			res.Msg = err.Error()
 		default:
-			res.Code = 3
+			res.Code = 500
 			logger.Logger.Errorf("登陆时发生错误：" + err.Error())
 			res.Msg = err.Error()
 		}
